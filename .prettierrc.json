@@ -1,0 +1,9 @@
+{
+	"singleQuote": true,
+	"useTabs": true,
+	"tabWidth": 2,
+	"[javascript]": {
+		"singleAttributePerLine": true,
+		"arrowParens": "allow"
+	}
+}
