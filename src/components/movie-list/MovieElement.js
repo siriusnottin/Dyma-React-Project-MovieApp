@@ -13,8 +13,7 @@ export default class MovieElement extends Component {
 						width="150"
 						heigh="200"
 						src={this.props.movie.img}
-						alt={'Affiche du film ' + this.props.movie.title}
-					/>
+						alt={'Affiche du film ' + this.props.movie.title} />
 					<div className="flex-fill d-flex flex-column p-3">
 						<h2>{this.props.movie.title}</h2>
 						<hr className="w-100" />
