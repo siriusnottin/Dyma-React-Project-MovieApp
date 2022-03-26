@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class MovieDetails extends Component {
 	render() {
 		return (
-			<aside className="w-25 border p-4 d-flex flex-column">
+			<aside className="w-25 bg-light p-4 d-flex flex-column">
 				<h2>{this.props.movie.title}</h2>
 				<hr className="w-100" />
 				<div>
