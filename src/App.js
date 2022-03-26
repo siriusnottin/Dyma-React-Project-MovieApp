@@ -17,7 +17,7 @@ class App extends Component {
 				movies: dataMovies,
 				loaded: true
 			} )
-		}, 2000);
+		}, 100);
 	}
 
 	updateSelectedMovie = (index) => {
