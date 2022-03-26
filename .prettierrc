@@ -1,0 +1,7 @@
+singleQuote: true
+useTabs: true
+tabWidth: 2
+bracketsameLine: true
+javascript:
+	- singleAttributePerLine: true
+	- arrowParens: avoid
