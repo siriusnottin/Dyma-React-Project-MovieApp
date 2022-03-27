@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, MovieList, MovieDetails, Loader as Loading } from './components';
+import { Header, MovieList, MovieDetails, Loader as Loading, SearchBar } from './components';
 import apiMovie from './config/api.movie';
 
 class App extends Component {
