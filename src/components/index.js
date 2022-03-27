@@ -1,2 +1,2 @@
 export { default as Header } from './header/Header';
-export { default as Loader } from './utils/Loading';
+export { default as Loader } from './utils/Loader';

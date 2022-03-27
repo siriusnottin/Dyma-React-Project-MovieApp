@@ -1,6 +1,6 @@
 import React from 'react';
 import { MovieList, MovieDetails, SearchBar } from './components';
-import Loading from '../../components/utils/Loading';
+import Loading from '../../components/utils/Loader';
 
 export default (props) => {
   return (
