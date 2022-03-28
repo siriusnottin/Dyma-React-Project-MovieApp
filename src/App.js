@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from './components';
 import apiMovie, { apiMovieMap } from './config/api.movie';
+import apiFirebase from './config/api.firebase';
 import Movies from './features/movies';
 import Favorites from './features/favorites';
 import {
@@ -17,7 +18,7 @@ class App extends Component {
       movies: null,
       loaded: false,
       selectedMovie: 0,
-      favorites: [],
+      favorites: null,
     };
   }
 
@@ -34,12 +35,24 @@ class App extends Component {
         this.updateMovies(movies);
       })
       .catch((err) => console.log(err));
+
+    apiFirebase.get('favorites.json').then((res) => {
+      let favorites = res.data ? res.data : [];
+      this.updateFavorites(favorites);
+    });
   }
 
   updateMovies = (movies) => {
     this.setState({
       movies,
-      loaded: true,
+      loaded: this.state.favorites ? true : false,
+    });
+  };
+
+  updateFavorites = (favorites) => {
+    this.setState({
+      favorites,
+      loaded: this.state.movies ? true : false,
     });
   };
 
@@ -47,7 +60,7 @@ class App extends Component {
     const favorites = this.state.favorites.slice();
     const movie = this.state.movies.find((movie) => movie.title === title);
     favorites.push(movie);
-    this.setState({ favorites });
+    this.setState({ favorites }, () => this.saveFavorite());
   };
 
   removeFavorite = (title) => {
@@ -56,7 +69,11 @@ class App extends Component {
       (movie) => movie.title === title
     );
     favorites.splice(index, 1);
-    this.setState({ favorites });
+    this.setState({ favorites }, () => this.saveFavorite());
+  };
+
+  saveFavorite = () => {
+    apiFirebase.put('favorites.json', this.state.favorites);
   };
 
   render() {
@@ -76,7 +93,7 @@ class App extends Component {
                   updateSelectedMovie={this.updateSelectedMovie}
                   addFavorite={this.addFavorite}
                   removeFavorite={this.removeFavorite}
-                  favorites={this.state.favorites.map((movie) => movie.title)}
+                  favorites={this.state.favorites}
                 />
               }
             />
@@ -84,6 +101,7 @@ class App extends Component {
               path="/favorites"
               element={
                 <Favorites
+                  loaded={this.state.loaded}
                   favorites={this.state.favorites}
                   removeFavorite={this.removeFavorite}
                 />
