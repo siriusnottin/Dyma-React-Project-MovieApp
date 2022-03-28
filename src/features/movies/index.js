@@ -12,6 +12,9 @@ export default (props) => {
             <MovieList
               movies={props.movies}
               updateSelectedMovie={props.updateSelectedMovie}
+              favorites={props.favorites}
+              addFavorite={props.addFavorite}
+              removeFavorite={props.removeFavorite}
             />
             <MovieDetails movie={props.movies[props.selectedMovie]} />
           </>
