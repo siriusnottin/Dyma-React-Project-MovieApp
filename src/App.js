@@ -8,9 +8,9 @@ class App extends Component {
     super(props);
     this.state = {
       movies: null,
+      loaded: false,
       selectedMovie: 0,
       // favorites: [],
-      loaded: false,
     };
   }
 
